@@ -1,0 +1,10 @@
+@layer reset, tokens, base, layout, components, effects, utilities;
+@import './tokens.css' layer(tokens);
+@import './reset.css' layer(reset);
+@import './base.css' layer(base);
+@import './layout.css' layer(layout);
+@import './components.css' layer(components);
+@import './effects.css' layer(effects);
+@import './utilities.css' layer(utilities);
+@import './menu.css' layer(components);
+@import './game-settings.css' layer(components);

@@ -1,0 +1,523 @@
+.ew-settings {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 0;
+  min-height: 100%;
+  background: var(--ew-color-surface-1);
+  color: var(--ew-color-text);
+}
+.ew-settings__tabs {
+  display: flex;
+  gap: var(--ew-space-2);
+  padding: var(--ew-space-3) var(--ew-space-5) 0;
+  border-bottom: var(--ew-stroke-hairline) solid var(--ew-color-border);
+}
+.ew-settings__tabs .ew-tab {
+  min-height: var(--ew-control-height-md);
+  padding: 0 var(--ew-space-4);
+  color: var(--ew-color-text-muted);
+  border-bottom: var(--ew-stroke-strong) solid transparent;
+}
+.ew-settings__tabs .ew-tab[aria-selected='true'] {
+  color: var(--ew-color-text-strong);
+  border-bottom-color: var(--ew-color-accent);
+}
+.ew-settings__scroll {
+  flex: 1;
+  block-size: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.ew-settings__panel {
+  padding: var(--ew-space-5);
+}
+.ew-settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ew-space-4);
+}
+.ew-settings__section {
+  container-name: settings-section;
+  container-type: inline-size;
+  min-width: 0;
+  padding: var(--ew-space-4);
+  border: var(--ew-stroke-hairline) solid var(--ew-color-border);
+  background: var(--ew-color-surface-2);
+  box-shadow: var(--ew-shadow-inset);
+}
+.ew-settings__section--wide {
+  grid-column: 1 / -1;
+}
+.ew-settings__section h2 {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin: 0 0 var(--ew-space-4);
+  overflow-wrap: anywhere;
+  color: var(--ew-color-accent);
+  font-family: var(--ew-font-display);
+  font-size: var(--ew-text-lg);
+  letter-spacing: var(--ew-tracking-display);
+}
+.ew-settings__section-body,
+.ew-settings__controls {
+  display: grid;
+  gap: var(--ew-space-4);
+}
+.ew-settings-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ew-space-4);
+}
+.ew-settings-quality-rail {
+  display: grid;
+  gap: var(--ew-space-2);
+  margin-block-end: var(--ew-space-4);
+  padding-block-end: var(--ew-space-4);
+  border-block-end: thin solid var(--ew-color-border);
+}
+.ew-settings-quality-rail__label {
+  color: var(--ew-color-text-muted);
+  font-size: var(--ew-text-sm);
+  font-weight: var(--ew-font-weight-semibold);
+}
+.ew-settings-super-resolution {
+  display: grid;
+  gap: var(--ew-space-2);
+}
+.ew-settings-super-resolution label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.8fr);
+  gap: var(--ew-space-4);
+  align-items: center;
+  color: var(--ew-color-text);
+  font-size: var(--ew-text-sm);
+}
+.ew-settings-quality-rail .ew-segmented {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.ew-settings-quality-rail .ew-segmented .ew-button {
+  flex: 1 0 6rem;
+  min-block-size: var(--ew-control-height-md);
+  white-space: nowrap;
+  border-color: var(--ew-color-border);
+  border-inline-end-width: 0;
+  border-radius: 0;
+}
+.ew-settings-quality-rail .ew-segmented .ew-button:first-child {
+  border-radius: var(--ew-radius-xs) 0 0 var(--ew-radius-xs);
+}
+.ew-settings-quality-rail .ew-segmented .ew-button:last-child {
+  border-inline-end-width: thin;
+  border-radius: 0 var(--ew-radius-xs) var(--ew-radius-xs) 0;
+}
+.ew-settings-quality-rail .ew-segmented .ew-button[aria-pressed='true'] {
+  position: relative;
+  z-index: 1;
+  color: var(--ew-color-text-strong);
+  border-color: var(--ew-color-border-strong);
+  background: var(--ew-color-surface-hover);
+  box-shadow: 0 0 var(--ew-glow-soft) rgb(209 173 112 / 0.18);
+}
+.ew-settings-controls label,
+.ew-settings-row {
+  display: grid;
+  gap: var(--ew-space-2);
+  align-content: center;
+  color: var(--ew-color-text);
+  font-size: var(--ew-text-sm);
+}
+.ew-settings-outline-table,
+.ew-settings-performance-table,
+.ew-settings-range-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.ew-settings-outline-table th,
+.ew-settings-outline-table td,
+.ew-settings-performance-table th,
+.ew-settings-performance-table td,
+.ew-settings-range-table th,
+.ew-settings-range-table td {
+  padding-block: var(--ew-space-2);
+  vertical-align: middle;
+}
+.ew-settings-outline-table th,
+.ew-settings-performance-table th,
+.ew-settings-range-table th {
+  inline-size: 60%;
+  padding-inline-end: var(--ew-space-4);
+  color: var(--ew-color-text);
+  font-size: var(--ew-text-sm);
+  font-weight: var(--ew-font-weight-regular);
+  text-align: start;
+}
+.ew-settings-performance-table th,
+.ew-settings-range-table th {
+  display: grid;
+  gap: var(--ew-space-1);
+}
+.ew-settings-performance-table th output,
+.ew-settings-range-table th output {
+  color: var(--ew-color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.ew-settings-outline-table tr + tr,
+.ew-settings-performance-table tr + tr,
+.ew-settings-range-table tr + tr {
+  border-block-start: thin solid rgb(166 124 67 / 0.18);
+}
+.ew-settings-outline-table .ew-input,
+.ew-settings-performance-table .ew-input,
+.ew-settings-range-table .ew-input {
+  inline-size: 100%;
+}
+.ew-settings-performance-table tr,
+.ew-settings-range-table tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, auto);
+  align-items: center;
+}
+.ew-settings-performance-table--range tr,
+.ew-settings-range-table tr {
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(5rem, 8rem) minmax(8rem, 1.4fr);
+}
+.ew-settings-performance-table th,
+.ew-settings-range-table th {
+  inline-size: auto;
+}
+.ew-settings-max-fps-row th {
+  white-space: nowrap;
+}
+.ew-settings-max-fps-input {
+  inline-size: min(100%, 8rem);
+}
+.ew-settings-performance-table td,
+.ew-settings-range-table td {
+  display: grid;
+  gap: var(--ew-space-2);
+  align-items: center;
+}
+.ew-settings-performance-table td.ew-settings-performance-control,
+.ew-settings-range-table td.ew-settings-performance-control {
+  display: flex;
+  min-block-size: var(--ew-control-height-md);
+  align-items: center;
+  justify-content: flex-start;
+}
+.ew-settings-performance-table td.is-muted,
+.ew-settings-range-table td.is-muted {
+  opacity: 0.48;
+}
+.ew-settings-performance-table .ew-switch-control,
+.ew-settings-range-table .ew-switch-control {
+  justify-self: start;
+}
+.ew-settings-performance-table td:has(.ew-slider),
+.ew-settings-range-table td:has(.ew-slider) {
+  grid-template-columns: minmax(5rem, 0.45fr) minmax(8rem, 1fr);
+}
+.ew-settings-performance-table--range .ew-settings-performance-value,
+.ew-settings-performance-table--range .ew-settings-performance-slider,
+.ew-settings-range-table .ew-settings-performance-value,
+.ew-settings-range-table .ew-settings-performance-slider {
+  display: flex;
+  min-inline-size: 0;
+  align-items: center;
+}
+.ew-settings-performance-table--range .ew-settings-performance-value,
+.ew-settings-range-table .ew-settings-performance-value {
+  padding-inline-end: var(--ew-space-3);
+}
+.ew-settings-performance-table--range .ew-settings-performance-value .ew-input,
+.ew-settings-range-table .ew-settings-performance-value .ew-input {
+  inline-size: 100%;
+}
+.ew-settings-performance-table--range .ew-settings-performance-slider .ew-slider,
+.ew-settings-range-table .ew-settings-performance-slider .ew-slider {
+  inline-size: 100%;
+}
+.ew-settings-outline-table th,
+.ew-settings-outline-table td,
+.ew-settings-performance-table--range th,
+.ew-settings-performance-table--range td,
+.ew-settings-range-table th,
+.ew-settings-range-table td {
+  padding-block: var(--ew-space-1);
+}
+.ew-settings-outline-table th,
+.ew-settings-performance-table--range th,
+.ew-settings-range-table th {
+  font-size: var(--ew-text-xs);
+}
+.ew-settings-outline-table .ew-input,
+.ew-settings-performance-table--range .ew-input,
+.ew-settings-range-table .ew-input {
+  min-block-size: var(--ew-control-height-sm);
+  padding: var(--ew-space-1) var(--ew-space-2);
+  font-size: var(--ew-text-xs);
+}
+.ew-settings-performance-table--range .ew-settings-performance-slider .ew-slider {
+  block-size: var(--ew-control-height-sm);
+}
+.ew-settings-range-table .ew-settings-performance-slider .ew-slider {
+  block-size: var(--ew-control-height-sm);
+}
+.ew-settings-performance-table--range .ew-settings-performance-slider .ew-slider__track {
+  block-size: 0.375rem;
+}
+.ew-settings-range-table .ew-settings-performance-slider .ew-slider__track {
+  block-size: 0.375rem;
+}
+.ew-settings-performance-table--range .ew-settings-performance-slider .ew-slider__thumb {
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+}
+.ew-settings-range-table .ew-settings-performance-slider .ew-slider__thumb {
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+}
+.ew-settings-row {
+  grid-template-columns: minmax(8rem, 0.7fr) minmax(8rem, 1fr);
+  align-items: center;
+}
+.ew-settings-row > * {
+  min-inline-size: 0;
+}
+.ew-settings-row output,
+.ew-settings-controls output {
+  color: var(--ew-color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.ew-settings-display-resolution-control {
+  display: flex;
+  align-items: center;
+}
+.ew-settings-resolution-row {
+  align-items: start;
+}
+.ew-settings-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ew-space-2);
+}
+.ew-settings-mode__button {
+  display: grid;
+  place-items: center;
+  inline-size: calc(var(--ew-hit-target) * 2);
+  block-size: calc(var(--ew-hit-target) * 2);
+  padding: var(--ew-space-2);
+  border: var(--ew-stroke-hairline) solid var(--ew-color-border);
+  background: var(--ew-color-surface-1);
+  color: var(--ew-color-text-muted);
+  cursor: pointer;
+  transition:
+    border-color var(--ew-duration-fast) var(--ew-ease-standard),
+    box-shadow var(--ew-duration-fast) var(--ew-ease-standard),
+    color var(--ew-duration-fast) var(--ew-ease-standard);
+}
+.ew-settings-mode__button:hover,
+.ew-settings-mode__button:focus-visible,
+.ew-settings-mode__button.is-selected {
+  color: var(--ew-color-text-strong);
+  border-color: var(--ew-color-border-strong);
+}
+.ew-settings-mode__button.is-selected {
+  box-shadow: 0 0 var(--ew-glow-soft) rgb(209 173 112 / 0.18);
+}
+.ew-settings-mode__button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+.ew-settings-mode__button.is-selected img,
+.ew-settings-mode__button:hover img,
+.ew-settings-mode__button:focus-visible img {
+  opacity: 1;
+}
+.ew-settings__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ew-space-4);
+  padding: var(--ew-space-4) var(--ew-space-5);
+  border-top: var(--ew-stroke-hairline) solid var(--ew-color-border);
+  background: var(--ew-color-surface-2);
+}
+.ew-settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ew-space-2);
+}
+.ew-settings__status {
+  color: var(--ew-color-text-muted);
+  font-size: var(--ew-text-sm);
+}
+.ew-settings__state {
+  display: grid;
+  place-items: center;
+  gap: var(--ew-space-4);
+  min-height: 20rem;
+  padding: var(--ew-space-6);
+}
+.ew-settings__state--error {
+  color: var(--ew-color-danger);
+}
+.ew-settings__discard {
+  position: absolute;
+  inset: 20% 15%;
+  z-index: var(--ew-z-modal);
+  display: grid;
+  place-content: center;
+  gap: var(--ew-space-5);
+  padding: var(--ew-space-6);
+  border: var(--ew-stroke-strong) solid var(--ew-color-border-strong);
+  background: var(--ew-color-surface-1);
+  box-shadow: var(--ew-shadow-relic);
+}
+.ew-settings__preview {
+  position: absolute;
+  inset: 20% 15%;
+  z-index: var(--ew-z-modal);
+  display: grid;
+  place-content: center;
+  gap: var(--ew-space-4);
+  padding: var(--ew-space-6);
+  border: var(--ew-stroke-strong) solid var(--ew-color-border-strong);
+  background: var(--ew-color-surface-1);
+  box-shadow: var(--ew-shadow-relic);
+}
+@media (max-width: 58rem) {
+  .ew-settings-grid {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings__section--wide {
+    grid-column: auto;
+  }
+  .ew-settings-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 38rem) {
+  .ew-settings__panel {
+    padding: var(--ew-space-3);
+  }
+  .ew-settings-controls {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .ew-settings__actions {
+    justify-content: stretch;
+  }
+  .ew-settings__actions .ew-button {
+    flex: 1;
+  }
+}
+@container settings-section (max-width: 24rem) {
+  .ew-settings-display-row {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-visibility-table tr {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-visibility-table th,
+  .ew-settings-visibility-table .ew-settings-performance-value,
+  .ew-settings-view-rendering-table th,
+  .ew-settings-view-rendering-table .ew-settings-performance-value {
+    padding-inline-end: 0;
+  }
+  .ew-settings-view-rendering-table tr {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-outline-adaptive-table,
+  .ew-settings-outline-adaptive-table tbody,
+  .ew-settings-outline-adaptive-table tr {
+    display: grid;
+  }
+  .ew-settings-outline-adaptive-table tr {
+    grid-template-columns: 1fr;
+    gap: var(--ew-space-2);
+    padding-block: var(--ew-space-2);
+  }
+  .ew-settings-outline-adaptive-table th,
+  .ew-settings-outline-adaptive-table td {
+    inline-size: auto;
+    padding-block: 0;
+    padding-inline-end: 0;
+  }
+  .ew-settings-frame-rate-table tr {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-frame-rate-table th,
+  .ew-settings-frame-rate-table .ew-settings-performance-control {
+    inline-size: auto;
+    padding-inline-end: 0;
+  }
+  .ew-settings-camera-table tr {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-camera-table th,
+  .ew-settings-camera-table .ew-settings-performance-value {
+    padding-inline-end: 0;
+  }
+}
+@container settings-section (max-width: 42rem) {
+  .ew-settings-quality-rail .ew-segmented {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
+  .ew-settings-quality-rail .ew-segmented .ew-button {
+    min-inline-size: 0;
+    flex: none;
+    white-space: normal;
+    border-inline-end-width: thin;
+    border-radius: 0;
+  }
+  .ew-settings-quality-rail .ew-segmented .ew-button:first-child {
+    border-radius: var(--ew-radius-xs) 0 0 0;
+  }
+  .ew-settings-quality-rail .ew-segmented .ew-button:nth-child(3) {
+    border-radius: 0 var(--ew-radius-xs) 0 0;
+  }
+  .ew-settings-quality-rail .ew-segmented .ew-button:nth-child(4) {
+    border-radius: 0 0 0 var(--ew-radius-xs);
+  }
+  .ew-settings-quality-rail .ew-segmented .ew-button:last-child {
+    border-radius: 0 0 var(--ew-radius-xs) 0;
+  }
+  .ew-settings-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ew-space-3);
+  }
+}
+@container settings-section (max-width: 24rem) {
+  .ew-settings-controls {
+    grid-template-columns: 1fr;
+  }
+  .ew-settings-super-resolution label {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ew-settings-mode__button {
+    transition: none;
+  }
+}

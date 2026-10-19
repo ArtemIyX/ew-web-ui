@@ -1,0 +1,44 @@
+.ew-sr-only {
+  position: absolute;
+  inline-size: 1em;
+  block-size: 1em;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ew-skip-link {
+  position: absolute;
+  inset-block-start: var(--ew-space-2);
+  inset-inline-start: var(--ew-space-2);
+  z-index: var(--ew-z-raised);
+  transform: translateY(-200%);
+}
+
+.ew-skip-link:focus {
+  transform: none;
+}
+
+.ew-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ew-visually-muted {
+  color: var(--ew-color-text-muted);
+}
+
+.ew-hidden {
+  display: none;
+}
+
+.ew-full-width {
+  inline-size: 100%;
+}
+
+.ew-no-scroll {
+  overflow: hidden;
+}

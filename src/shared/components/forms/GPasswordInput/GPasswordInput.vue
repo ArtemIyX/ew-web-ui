@@ -1,0 +1,2 @@
+<script setup lang="ts">import GInput from '../GInput/GInput.vue'; defineProps<{ modelValue?: string; disabled?: boolean; readonly?: boolean }>(); defineEmits<{ 'update:modelValue': [value: string] }>()</script>
+<template><GInput class="ew-password-input" type="password" :model-value="modelValue" :disabled="disabled" :readonly="readonly" @update:model-value="$emit('update:modelValue', $event)" /></template>

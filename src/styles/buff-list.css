@@ -1,0 +1,106 @@
+.ew-buff-list {
+  display: grid;
+  grid-template-columns: var(--ew-space-3) minmax(0, 1fr);
+  min-block-size: var(--ew-space-6);
+}
+
+.ew-buff-list__drag-handle {
+  min-inline-size: var(--ew-space-3);
+  border: 0;
+  border-inline-end: thin solid var(--ew-color-border-subtle);
+  background: var(--ew-color-surface-2);
+}
+
+.ew-buff-list__drag-handle:focus-visible {
+  outline: var(--ew-focus-width) solid var(--ew-color-focus);
+  outline-offset: calc(var(--ew-focus-offset) * -1);
+}
+
+.ew-buff-list__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-content: start;
+  gap: var(--ew-space-1);
+  min-inline-size: 0;
+  overflow: visible;
+  padding: var(--ew-space-1);
+}
+
+.ew-buff-list__item {
+  display: grid;
+  aspect-ratio: 1;
+  inline-size: 85%;
+  justify-self: center;
+  min-inline-size: 0;
+  border: thin solid var(--ew-color-border-subtle);
+  background: var(--ew-color-surface-2);
+}
+
+.ew-buff-list__item:hover,
+.ew-buff-list__item:focus-visible {
+  border-color: var(--ew-color-bronze-300);
+  box-shadow: 0 0 0 var(--ew-space-1) var(--ew-color-bronze-700);
+  outline: none;
+}
+
+.ew-buff-visual {
+  position: relative;
+  display: grid;
+  min-inline-size: 0;
+  overflow: hidden;
+}
+
+.ew-buff-visual .ew-icon,
+.ew-buff-visual .ew-icon img {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ew-buff-visual .ew-icon img {
+  object-fit: cover;
+}
+
+.ew-buff-visual .ew-shortcuts__cooldown {
+  font-size: var(--ew-text-2xs);
+}
+
+.ew-buff-visual__level,
+.ew-buff-visual__skill-id {
+  position: absolute;
+  background: var(--ew-color-surface-1);
+  color: var(--ew-color-text-strong);
+  font-size: var(--ew-text-2xs);
+  line-height: 1;
+}
+
+.ew-buff-visual__level {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  padding: var(--ew-space-1);
+}
+
+.ew-buff-visual__skill-id {
+  inset-block-end: 0;
+  inset-inline: 0;
+  overflow: hidden;
+  padding: var(--ew-space-1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ew-window-frame[data-drag-region='handle'] [data-ew-window-drag-handle] {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.ew-window-frame[data-drag-region='handle'][data-dragging='true'] [data-ew-window-drag-handle] {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ew-buff-list__item {
+    transition: none;
+  }
+
+}

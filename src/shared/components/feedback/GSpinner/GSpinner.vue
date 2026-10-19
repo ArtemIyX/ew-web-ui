@@ -1,0 +1,2 @@
+<script setup lang="ts">import type { TextContent } from '@/shared/types/components'; import { useLocalizedText } from '@/shared/composables/localization/useLocalizedText'; const props = withDefaults(defineProps<{ label?: TextContent }>(), { label: () => ({ table: 'Common', textKey: '#LOADING' }) }); const labelText = useLocalizedText(() => props.label)</script>
+<template><span class="ew-spinner" role="status" :aria-label="labelText"></span></template>

@@ -1,0 +1,2 @@
+<script setup lang="ts">import type { TextContent } from '@/shared/types/components'; import { useLocalizedText } from '@/shared/composables/localization/useLocalizedText'; const props = withDefaults(defineProps<{ label?: TextContent }>(), { label: () => ({ table: 'Common', textKey: '#BREADCRUMB' }) }); const labelText = useLocalizedText(() => props.label)</script>
+<template><nav class="ew-breadcrumbs" :aria-label="labelText"><slot /></nav></template>

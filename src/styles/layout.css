@@ -1,0 +1,90 @@
+.ew-app-shell {
+  min-block-size: 100dvh;
+  overflow: hidden;
+}
+
+.ew-main-menu {
+  min-block-size: 100dvh;
+  display: grid;
+  place-items: center;
+}
+
+.ew-main-menu__content {
+  max-inline-size: 28rem;
+}
+
+.ew-main-menu__actions {
+  margin-block-start: var(--ew-space-6);
+}
+
+.ew-page {
+  padding-block: var(--ew-space-7);
+}
+
+.ew-container {
+  inline-size: min(calc(100% - 2 * var(--ew-space-5)), var(--ew-content-default));
+  margin-inline: auto;
+}
+
+.ew-container--narrow {
+  max-inline-size: var(--ew-content-narrow);
+}
+
+.ew-container--wide {
+  max-inline-size: var(--ew-content-wide);
+}
+
+.ew-section {
+  margin-block: var(--ew-space-7);
+}
+
+.ew-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ew-stack-gap, var(--ew-space-4));
+}
+
+.ew-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ew-cluster-gap, var(--ew-space-3));
+}
+
+.ew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ew-grid-min, 15rem)), 1fr));
+  gap: var(--ew-grid-gap, var(--ew-space-4));
+}
+
+.ew-split,
+.ew-sidebar-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ew-space-6);
+}
+
+.ew-sidebar-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem);
+}
+
+.ew-center {
+  display: grid;
+  place-items: center;
+}
+
+.ew-scroll-region {
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 40rem) {
+  .ew-page {
+    padding-block: var(--ew-space-5);
+  }
+
+  .ew-split,
+  .ew-sidebar-layout {
+    grid-template-columns: 1fr;
+  }
+}

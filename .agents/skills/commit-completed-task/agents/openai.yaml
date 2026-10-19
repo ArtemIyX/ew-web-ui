@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Completed Task"
+  short_description: "Create clean commits after completed tasks"
+  default_prompt: "Use $commit-completed-task to commit the completed task changes."

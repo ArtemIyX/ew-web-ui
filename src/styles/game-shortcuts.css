@@ -1,0 +1,199 @@
+.ew-shortcuts {
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-end: 1rem;
+  display: flex;
+  gap: var(--ew-space-2);
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+.ew-shortcuts__rail,
+.ew-shortcuts__row {
+  display: flex;
+  gap: var(--ew-space-1);
+}
+.ew-shortcuts__rail {
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.ew-shortcuts__rail button {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border: thin solid var(--ew-color-border);
+  background: rgb(13 17 22 / 0.8);
+  color: var(--ew-color-parchment-50);
+  cursor: pointer;
+}
+.ew-shortcuts__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ew-space-1);
+  justify-content: flex-end;
+}
+.ew-shortcuts__slot {
+  position: relative;
+  inline-size: clamp(2.75rem, 4.5dvw, 3.75rem);
+  block-size: clamp(2.75rem, 4.5dvw, 3.75rem);
+  overflow: hidden;
+  border: thin solid var(--ew-color-border);
+  background: rgb(13 17 22 / 0.75);
+  color: var(--ew-color-text);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+.ew-shortcuts__slot.is-dragging {
+  opacity: 0.35;
+}
+.ew-shortcuts__slot.is-cooling {
+  animation: ew-shortcut-cooldown-start 0.6s var(--ew-ease-standard);
+}
+.ew-shortcuts__slot.is-cooldown-ended {
+  animation: ew-shortcut-cooldown-end 0.8s var(--ew-ease-standard);
+}
+.ew-shortcuts__slot.is-drop-target {
+  border-color: var(--ew-color-accent);
+  box-shadow: 0 0 1rem rgb(209 173 112 / 0.45);
+}
+.ew-shortcuts__slot:focus-visible,
+.ew-shortcuts__slot:hover {
+  border-color: var(--ew-color-border-strong);
+  box-shadow: 0 0 1rem rgb(209 173 112 / 0.25);
+  outline: none;
+}
+.ew-shortcuts__slot.is-cooling::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
+  background: conic-gradient(
+    rgb(13 17 22 / 0.72) calc((1 - var(--ew-shortcut-progress)) * 360deg),
+    transparent 0
+  );
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+.ew-shortcuts__number,
+.ew-shortcuts__debug,
+.ew-shortcuts__level,
+.ew-shortcuts__cooldown,
+.ew-shortcuts__lock {
+  position: absolute;
+  z-index: 2;
+  font-size: var(--ew-text-xs);
+}
+.ew-shortcuts__number {
+  inset-inline-start: var(--ew-space-1);
+  inset-block-start: var(--ew-space-1);
+  color: var(--ew-color-steel-500);
+  font-size: 0.5rem;
+  line-height: 1;
+}
+.ew-shortcuts__debug {
+  inset-inline: var(--ew-space-1);
+  inset-block-end: var(--ew-space-1);
+  overflow: hidden;
+  font-size: 0.55rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ew-shortcuts__level {
+  inset-inline-end: var(--ew-space-1);
+  inset-block-start: var(--ew-space-1);
+  color: var(--ew-color-parchment-100);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.ew-shortcuts__cooldown {
+  inset: 50% auto auto 50%;
+  padding: 0.2rem 0.35rem;
+  background: transparent;
+  color: var(--ew-color-parchment-50);
+  font-size: var(--ew-text-xl);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow:
+    0 0 0.3rem var(--ew-color-void),
+    0 0.0625rem 0.1875rem var(--ew-color-void),
+    0 0 0.0625rem var(--ew-color-void);
+  transform: translate(-50%, -50%);
+}
+.ew-shortcuts__lock {
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inline-size: 0.65rem;
+  block-size: 0.65rem;
+  border-inline-end: 0.125rem solid var(--ew-color-bronze-300);
+  border-block-end: 0.125rem solid var(--ew-color-bronze-300);
+  color: var(--ew-color-bronze-300);
+}
+.ew-shortcuts__active {
+  position: absolute;
+  inset: 0;
+  background: rgb(125 176 191 / 0.22);
+  box-shadow: inset 0 0 1rem rgb(125 176 191 / 0.45);
+  pointer-events: none;
+}
+.ew-shortcuts__unsupported {
+  display: grid;
+  block-size: 100%;
+  place-items: center;
+  color: var(--ew-color-text-muted);
+  font-size: 0.6rem;
+}
+.ew-shortcuts .ew-icon {
+  display: grid;
+  block-size: 100%;
+  place-items: center;
+}
+.ew-shortcuts .ew-icon img {
+  max-inline-size: 90%;
+  max-block-size: 90%;
+}
+.ew-shortcuts__drag-preview {
+  position: fixed;
+  z-index: 10;
+  inline-size: clamp(2.5rem, 4dvw, 3.5rem);
+  block-size: clamp(2.5rem, 4dvw, 3.5rem);
+  padding: var(--ew-space-1);
+  border: thin solid var(--ew-color-border-strong);
+  background: rgb(13 17 22 / 0.9);
+  box-shadow: var(--ew-shadow-relic), 0 0 1rem rgb(209 173 112 / 0.35);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.ew-shortcuts__drag-preview img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+@keyframes ew-shortcut-cooldown-start {
+  0% {
+    box-shadow: 0 0 0 rgb(209 173 112 / 0);
+  }
+  35% {
+    box-shadow: 0 0 1rem rgb(209 173 112 / 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 rgb(209 173 112 / 0);
+  }
+}
+@keyframes ew-shortcut-cooldown-end {
+  0% {
+    box-shadow: 0 0 0 rgb(79 138 104 / 0);
+  }
+  35% {
+    box-shadow: 0 0 1rem rgb(79 138 104 / 0.65);
+  }
+  100% {
+    box-shadow: 0 0 0 rgb(79 138 104 / 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ew-shortcuts__slot {
+    transition: none;
+    animation: none;
+  }
+}

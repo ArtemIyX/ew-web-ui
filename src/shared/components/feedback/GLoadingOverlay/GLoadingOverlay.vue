@@ -1,0 +1,2 @@
+<script setup lang="ts">import GText from '../..//content/GText/GText.vue'; import type { TextContent } from '@/shared/types/components'; withDefaults(defineProps<{ label?: TextContent }>(), { label: () => ({ table: 'Common', textKey: '#LOADING' }) })</script>
+<template><div class="ew-loading-overlay" aria-busy="true"><span class="ew-spinner" aria-hidden="true"></span><slot><GText :content="label" /></slot></div></template>

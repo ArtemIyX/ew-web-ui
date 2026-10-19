@@ -1,0 +1,2 @@
+<script setup lang="ts">import GInput from '../GInput/GInput.vue'; import type { TextContent } from '@/shared/types/components'; defineProps<{ modelValue?: string; placeholder?: TextContent; disabled?: boolean }>(); defineEmits<{ 'update:modelValue': [value: string] }>()</script>
+<template><GInput class="ew-search-input" type="search" :model-value="modelValue" :placeholder="placeholder" :disabled="disabled" @update:model-value="$emit('update:modelValue', $event)" /></template>

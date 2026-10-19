@@ -1,0 +1,27 @@
+.ew-target-status {
+  display: grid;
+  gap: var(--ew-space-2);
+  min-inline-size: 0;
+  padding: var(--ew-space-2);
+  color: var(--l2-text-primary);
+}
+.ew-target-status__identity { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--ew-space-2); align-items: center; min-inline-size: 0; }
+.ew-target-status__portrait { inline-size: 3.25rem; block-size: 3.25rem; }
+.ew-target-status__details { display: grid; gap: var(--ew-space-1); min-inline-size: 0; }
+.ew-target-status__identity-row { display: flex; align-items: center; gap: var(--ew-space-1); min-inline-size: 0; }
+.ew-target-status__name { min-inline-size: 0; overflow: hidden; padding-inline-start: var(--ew-space-1); text-overflow: ellipsis; white-space: nowrap; }
+.ew-target-affiliation-badge { display: grid; flex: 0 0 1.5rem; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; margin-inline-start: var(--ew-space-1); border: thin solid var(--l2-bronze-300); transform: rotate(45deg); }
+.ew-target-affiliation-badge > * { inline-size: 1rem; block-size: 1rem; transform: rotate(-45deg); }
+.ew-target-affiliation-badge:focus-visible { outline: var(--ew-focus-width) solid var(--ew-color-focus); outline-offset: var(--ew-focus-offset); }
+.ew-target-marker { display: inline-grid; flex: 0 0 1.5rem; place-items: center; inline-size: 1.5rem; block-size: 1.5rem; margin-inline-start: auto; }
+.ew-target-marker svg { inline-size: 100%; block-size: 100%; }
+.ew-target-marker--ally { color: var(--ew-color-success); }
+.ew-target-marker--enemy { color: var(--ew-color-danger); }
+.ew-target-marker--world-structure { color: var(--ew-color-info); }
+.ew-target-marker--monster { color: var(--l2-stone-300); }
+.ew-target-marker--boss { color: var(--l2-rarity-arcane); }
+.ew-target-status__effects { display: grid; gap: var(--ew-space-1); }
+.ew-target-status__effects .ew-compact-status-effects__item { inline-size: 1.75rem; block-size: 1.75rem; }
+.ew-target-status-debug { display: grid; gap: var(--ew-space-2); }
+.ew-target-status-debug__target { margin: 0; color: var(--l2-text-primary); font-weight: 600; }
+.ew-target-status-debug__group { display: flex; flex-wrap: wrap; gap: var(--ew-space-1); }

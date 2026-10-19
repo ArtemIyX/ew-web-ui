@@ -1,0 +1,13 @@
+@import './buff-list.css';
+
+.ew-window-frame#buff-list {
+  border-inline-start: var(--ew-stroke-strong) solid var(--l2-state-success);
+}
+
+.ew-window-frame#debuff-list {
+  border-inline-start: var(--ew-stroke-strong) solid var(--ew-color-danger);
+}
+
+.ew-window-frame#toggle-list {
+  border-inline-start: var(--ew-stroke-strong) solid var(--l2-stone-400);
+}

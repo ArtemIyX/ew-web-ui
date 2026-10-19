@@ -1,0 +1,239 @@
+.ew-game-health-bar {
+  display: block;
+  inline-size: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.ew-game-health-bar:focus-visible {
+  outline: var(--ew-focus-width) solid var(--ew-color-focus);
+  outline-offset: var(--ew-focus-offset);
+}
+
+.ew-target-status .ew-game-level-badge__shape {
+  background: var(--l2-frame-normal);
+  color: var(--l2-text-primary);
+}
+
+.ew-target-status .ew-game-level-badge__value {
+  color: var(--l2-text-primary);
+}
+
+.ew-target-status .ew-game-level-badge {
+  flex: 0 0 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  transform: none;
+  font-size: var(--ew-text-xs);
+}
+
+.ew-target-status .ew-game-level-badge__shape {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
+.ew-target-status .ew-game-health-bar {
+  padding-inline: var(--ew-space-1);
+  padding-block-start: var(--ew-space-1);
+}
+
+.ew-target-status .ew-game-health-bar .ew-progress__meter {
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(180deg, var(--l2-hp-300), var(--l2-hp-700));
+  filter: drop-shadow(0 0 0.0625rem var(--l2-hp-500));
+}
+
+.ew-target-status .ew-game-health-bar .ew-progress--angled {
+  --ew-progress-slant: 1rem;
+}
+
+.ew-target-status .ew-game-health-bar .ew-progress--angled .ew-progress__track,
+.ew-target-status .ew-game-health-bar .ew-progress--angled .ew-progress__fill,
+.ew-target-status .ew-game-health-bar .ew-progress--angled .ew-progress__delta,
+.ew-target-status .ew-game-health-bar .ew-progress--angled .ew-progress__markers {
+  inset: 0.0625rem;
+}
+
+.ew-compact-status-effects {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--ew-space-1);
+  min-block-size: 0;
+}
+
+.ew-compact-status-effects__item {
+  display: grid;
+  place-items: center;
+  min-inline-size: 1.5rem;
+  min-block-size: 1.5rem;
+}
+
+.ew-compact-status-effects__item:focus-visible {
+  outline: var(--ew-focus-width) solid var(--ew-color-focus);
+  outline-offset: var(--ew-focus-offset);
+}
+
+.ew-cast-bar {
+  position: relative;
+  display: grid;
+  gap: var(--ew-space-1);
+  min-inline-size: 0;
+  padding-block-start: var(--ew-space-1);
+}
+
+.ew-cast-bar-leave-active {
+  transition:
+    opacity 200ms var(--ew-ease-standard),
+    transform 200ms var(--ew-ease-standard);
+}
+
+.ew-cast-bar-leave-to {
+  opacity: 0;
+  transform: translateY(var(--ew-space-1));
+}
+
+.ew-cast-bar--interrupted .ew-progress__meter {
+  background: var(--l2-stone-800);
+}
+
+.ew-cast-bar--interrupted .ew-progress__track {
+  background: var(--l2-stone-950);
+}
+
+.ew-cast-bar--interrupted .ew-progress[data-tone='cast'] .ew-progress__fill {
+  background: linear-gradient(
+    90deg,
+    var(--l2-stone-700),
+    var(--l2-stone-500),
+    var(--l2-stone-300)
+  );
+}
+
+.ew-cast-bar--interrupted {
+  animation: ew-cast-bar-interrupt-shake 180ms var(--ew-ease-standard);
+}
+
+.ew-cast-bar--cancelled {
+  animation: ew-cast-bar-cancel 220ms var(--ew-ease-standard) forwards;
+}
+
+.ew-cast-bar--finished {
+  animation: ew-cast-bar-finish 220ms var(--ew-ease-standard) forwards;
+}
+
+@keyframes ew-cast-bar-interrupt-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-0.125rem);
+  }
+
+  50% {
+    transform: translateX(0.125rem);
+  }
+
+  75% {
+    transform: translateX(-0.0625rem);
+  }
+}
+
+@keyframes ew-cast-bar-cancel {
+  to {
+    opacity: 0;
+    transform: translateY(var(--ew-space-1)) scale(0.985);
+  }
+}
+
+@keyframes ew-cast-bar-finish {
+  50% {
+    filter: brightness(1.12);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#player-ability-cast {
+  overflow: visible;
+}
+
+#player-ability-cast:not(:has(.ew-cast-bar)) {
+  pointer-events: none;
+}
+
+#player-ability-cast .ew-window-body {
+  overflow: visible;
+}
+
+#player-ability-cast .ew-cast-bar {
+  padding: var(--ew-space-2);
+  background: transparent;
+  box-shadow: none;
+}
+
+.ew-player-cast-debug {
+  display: grid;
+  gap: var(--ew-space-2);
+}
+
+.ew-player-cast-debug__status {
+  margin: 0;
+  color: var(--ew-color-text-muted);
+  font-size: var(--ew-text-sm);
+}
+
+.ew-player-cast-debug__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ew-space-1);
+}
+
+.ew-cast-bar__heading {
+  overflow: hidden;
+  color: var(--l2-text-primary);
+  font-size: var(--ew-text-sm);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ew-cast-bar__remaining {
+  position: absolute;
+  inset-block-start: var(--ew-space-1);
+  inset-inline-end: var(--ew-space-2);
+  color: var(--l2-text-primary);
+  font-size: var(--ew-text-xs);
+  pointer-events: none;
+}
+
+.ew-progress[data-tone='cast'] {
+  --ew-progress-tone-fill: linear-gradient(
+    90deg,
+    var(--l2-purple-800),
+    var(--l2-purple-500),
+    var(--l2-purple-200)
+  );
+}
+
+.ew-progress[data-tone='cast'] .ew-progress__fill {
+  background: var(--ew-progress-tone-fill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ew-cast-bar--interrupted,
+  .ew-cast-bar--cancelled,
+  .ew-cast-bar--finished,
+  .ew-cast-bar-leave-active,
+  .ew-cast-bar * {
+    transition: none;
+    animation: none;
+  }
+}

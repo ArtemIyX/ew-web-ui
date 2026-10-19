@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Debug orb">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#134e4a" />
+      <stop offset="1" stop-color="#2dd4bf" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="blur" /><feFlood flood-color="#000" flood-opacity="0.85" /><feComposite in2="blur" operator="in" /><feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+  </defs>
+  <rect width="256" height="256" fill="url(#gradient)" />
+  <circle cx="128" cy="128" r="54" fill="#fecdd3" filter="url(#glow)" />
+</svg>

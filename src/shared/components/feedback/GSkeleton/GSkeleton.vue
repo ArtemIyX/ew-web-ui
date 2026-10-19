@@ -1,0 +1,2 @@
+<script setup lang="ts">import GText from '../..//content/GText/GText.vue'; import type { TextContent } from '@/shared/types/components'; withDefaults(defineProps<{ lines?: number; label?: TextContent }>(), { lines: 1, label: () => ({ table: 'Common', textKey: '#LOADING' }) })</script>
+<template><div class="ew-skeleton" aria-busy="true"><GText class="ew-sr-only" :content="label" /><span v-for="line in lines" :key="line" class="ew-skeleton__line"></span></div></template>
