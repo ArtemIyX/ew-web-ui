@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draft Pull Request"
+  short_description: "Write PR Markdown from branch changes"
+  default_prompt: "Use $draft-pull-request to draft a pull request from this branch."
